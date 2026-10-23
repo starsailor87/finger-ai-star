@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RFP Insight AI</title>
+  <meta name="description" content="금융 공공기관 IT 입찰공고 모니터링과 RFP 분석을 돕는 서비스" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --surface: #ffffff;
+      --ink: #16181d;
+      --muted: #5d6270;
+      --line: #e3e3dc;
+      --accent: #1f4fd6;
+      --accent-soft: #e8eefc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111317;
+        --surface: #191c22;
+        --ink: #eceef2;
+        --muted: #a2a8b5;
+        --line: #2a2e37;
+        --accent: #7ea2ff;
+        --accent-soft: #1d2640;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    header { padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .brand { font-weight: 700; letter-spacing: -0.01em; }
+    .brand span { color: var(--accent); }
+    .hero { padding: 72px 0 56px; }
+    .tag {
+      display: inline-block; font-size: 13px; font-weight: 600;
+      color: var(--accent); background: var(--accent-soft);
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.25; letter-spacing: -0.02em; margin: 0 0 16px; }
+    .lead { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0; }
+    section { padding: 40px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 20px; margin: 0 0 20px; letter-spacing: -0.01em; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 12px; padding: 22px;
+    }
+    .card .num { font-size: 13px; font-weight: 700; color: var(--accent); }
+    .card h3 { font-size: 17px; margin: 6px 0 8px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+    .orgs { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+    .orgs li {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 8px; padding: 8px 14px; font-size: 15px;
+    }
+    .status {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 12px; padding: 18px 22px; color: var(--muted);
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #e3a008; flex: none; }
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap"><div class="brand">RFP Insight <span>AI</span></div></div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="tag">핑거 AX 해커톤 · MVP</div>
+      <h1>금융 공공기관 IT 입찰공고,<br />놓치지 않고 빠르게 읽는다</h1>
+      <p class="lead">나라장터에 올라오는 금융 공공기관의 IT 사업 공고를 매일 모니터링하고, RFP 핵심 내용을 AI가 요약·분석해 영업 담당자가 참여 여부를 빠르게 판단하도록 돕습니다.</p>
+    </div>
+
+    <section>
+      <h2>주요 기능</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="num">01</div>
+          <h3>공고 모니터링</h3>
+          <p>대상 기관의 나라장터 IT 공고를 데일리로 수집해 새 공고와 재공고를 한눈에 보여줍니다.</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h3>RFP 분석</h3>
+          <p>제안요청서에서 사업 범위, 예산, 일정, 자격 요건, 평가 기준을 뽑아 요약합니다.</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h3>참여 판단 지원</h3>
+          <p>자사 역량과 비교해 검토할 포인트와 리스크를 정리해 의사결정을 돕습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>모니터링 대상 기관</h2>
+      <ul class="orgs">
+        <li>한국은행</li>
+        <li>예금보험공사</li>
+        <li>신용보증기금</li>
+        <li>기술보증기금</li>
+        <li>한국주택금융공사</li>
+        <li>IBK기업은행</li>
+        <li>한국산업은행</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>진행 상태</h2>
+      <div class="status"><span class="dot"></span>MVP 개발 중입니다. 공고 수집과 RFP 분석 기능을 순서대로 추가할 예정입니다.</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 RFP Insight AI · 핑거 Business Orchestration</div>
+  </footer>
+</body>
+</html>
