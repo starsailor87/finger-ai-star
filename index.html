@@ -4,129 +4,175 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RFP Insight AI</title>
-  <meta name="description" content="금융 공공기관 IT 입찰공고 모니터링과 RFP 분석을 돕는 서비스" />
+  <meta name="description" content="금융기관 IT 입찰공고를 매일 모니터링하고, RFP를 분석해 리스크까지 검증하며, 일정을 캘린더로 한눈에 보여주는 영업 지원 서비스" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <style>
-    :root {
-      --bg: #f7f7f4;
-      --surface: #ffffff;
-      --ink: #16181d;
-      --muted: #5d6270;
-      --line: #e3e3dc;
-      --accent: #1f4fd6;
-      --accent-soft: #e8eefc;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111317;
-        --surface: #191c22;
-        --ink: #eceef2;
-        --muted: #a2a8b5;
-        --line: #2a2e37;
-        --accent: #7ea2ff;
-        --accent-soft: #1d2640;
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
-    header { padding: 28px 0; border-bottom: 1px solid var(--line); }
-    .brand { font-weight: 700; letter-spacing: -0.01em; }
-    .brand span { color: var(--accent); }
-    .hero { padding: 72px 0 56px; }
-    .tag {
-      display: inline-block; font-size: 13px; font-weight: 600;
-      color: var(--accent); background: var(--accent-soft);
-      padding: 4px 10px; border-radius: 999px; margin-bottom: 18px;
-    }
-    h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.25; letter-spacing: -0.02em; margin: 0 0 16px; }
-    .lead { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0; }
-    section { padding: 40px 0; border-top: 1px solid var(--line); }
-    h2 { font-size: 20px; margin: 0 0 20px; letter-spacing: -0.01em; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-    .card {
-      background: var(--surface); border: 1px solid var(--line);
-      border-radius: 12px; padding: 22px;
-    }
-    .card .num { font-size: 13px; font-weight: 700; color: var(--accent); }
-    .card h3 { font-size: 17px; margin: 6px 0 8px; }
-    .card p { margin: 0; color: var(--muted); font-size: 15px; }
-    .orgs { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
-    .orgs li {
-      background: var(--surface); border: 1px solid var(--line);
-      border-radius: 8px; padding: 8px 14px; font-size: 15px;
-    }
-    .status {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--surface); border: 1px solid var(--line);
-      border-radius: 12px; padding: 18px 22px; color: var(--muted);
-    }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: #e3a008; flex: none; }
-    footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <header>
-    <div class="wrap"><div class="brand">RFP Insight <span>AI</span></div></div>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#notices">RFP Insight <span>AI</span></a>
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="#notices" data-nav="notices">공고 모니터링</a>
+        <a href="#analyze" data-nav="analyze">RFP 분석</a>
+        <a href="#calendar" data-nav="calendar">일정 캘린더</a>
+        <a href="#about" data-nav="about">서비스 소개</a>
+      </nav>
+      <span class="demo-pill" title="화면의 공고와 RFP는 가상 샘플 데이터입니다">가상 샘플 데이터</span>
+    </div>
   </header>
 
   <main class="wrap">
-    <div class="hero">
-      <div class="tag">핑거 AX 해커톤 · MVP</div>
-      <h1>금융 공공기관 IT 입찰공고,<br />놓치지 않고 빠르게 읽는다</h1>
-      <p class="lead">나라장터에 올라오는 금융 공공기관의 IT 사업 공고를 매일 모니터링하고, RFP 핵심 내용을 AI가 요약·분석해 영업 담당자가 참여 여부를 빠르게 판단하도록 돕습니다.</p>
-    </div>
+    <!-- 1. 공고 모니터링 -->
+    <section class="view" id="view-notices" aria-labelledby="h-notices">
+      <div class="page-head">
+        <div>
+          <h1 id="h-notices">오늘의 입찰공고</h1>
+          <p id="today-label">금융기관 IT 사업 공고를 매일 모아 신규·재공고·정정을 구분합니다.</p>
+        </div>
+      </div>
 
-    <section>
-      <h2>주요 기능</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="num">01</div>
-          <h3>공고 모니터링</h3>
-          <p>대상 기관의 나라장터 IT 공고를 데일리로 수집해 새 공고와 재공고를 한눈에 보여줍니다.</p>
+      <div class="kpis" id="kpis"></div>
+
+      <div class="filters" role="group" aria-label="공고 필터">
+        <div class="seg" id="f-group" role="group" aria-label="기관 구분">
+          <button type="button" data-v="all" aria-pressed="true">전체</button>
+          <button type="button" data-v="public" aria-pressed="false">공공 금융기관</button>
+          <button type="button" data-v="bank" aria-pressed="false">시중은행</button>
         </div>
-        <div class="card">
-          <div class="num">02</div>
-          <h3>RFP 분석</h3>
-          <p>제안요청서에서 사업 범위, 예산, 일정, 자격 요건, 평가 기준을 뽑아 요약합니다.</p>
+        <div class="seg" id="f-type" role="group" aria-label="공고 유형">
+          <button type="button" data-v="all" aria-pressed="true">모든 유형</button>
+          <button type="button" data-v="신규" aria-pressed="false">신규</button>
+          <button type="button" data-v="재공고" aria-pressed="false">재공고</button>
+          <button type="button" data-v="정정" aria-pressed="false">정정</button>
         </div>
-        <div class="card">
-          <div class="num">03</div>
-          <h3>참여 판단 지원</h3>
-          <p>자사 역량과 비교해 검토할 포인트와 리스크를 정리해 의사결정을 돕습니다.</p>
+        <label class="search">
+          <span class="sr-only">공고 검색</span>
+          <input id="f-q" type="search" placeholder="기관명·사업명 검색" autocomplete="off" />
+        </label>
+        <label>
+          <span class="sr-only">정렬</span>
+          <select id="f-sort" class="select">
+            <option value="deadline">마감 임박순</option>
+            <option value="posted">최신 공고순</option>
+            <option value="budget">예산 큰 순</option>
+            <option value="score">판단 지표 높은 순</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="card list" id="notice-list" role="list"></div>
+      <p class="note" style="margin-top:10px">공고를 누르면 RFP 요약과 리스크 검증 결과를 볼 수 있습니다. 판단 지표는 규칙 기반 참고값이며 최종 결정은 담당자가 합니다.</p>
+    </section>
+
+    <!-- 2. RFP 분석 -->
+    <section class="view" id="view-analyze" aria-labelledby="h-analyze" hidden>
+      <div class="page-head">
+        <div>
+          <h1 id="h-analyze">RFP 분석 · 리스크 검증</h1>
+          <p>RFP를 올리거나 붙여넣으면 핵심 항목을 뽑고 계약·일정·자격 조건의 리스크를 검증합니다.</p>
+        </div>
+      </div>
+      <div class="analyze-grid">
+        <div class="card input-card">
+          <div class="drop" id="drop">
+            PDF·TXT 파일을 끌어다 놓거나
+            <label for="file">파일 선택</label>
+            <input id="file" type="file" accept=".pdf,.txt,.md,text/plain,application/pdf" class="sr-only" />
+          </div>
+          <label for="rfp-text" class="sr-only">RFP 본문</label>
+          <textarea id="rfp-text" placeholder="RFP 본문을 붙여넣으세요."></textarea>
+          <div class="cap-row">
+            <label for="caps">우리 회사 역량 키워드 (쉼표로 구분)</label>
+            <input id="caps" class="text-input" type="text" />
+          </div>
+          <div class="actions">
+            <button type="button" class="btn primary" id="btn-analyze">분석하기</button>
+            <button type="button" class="btn" id="btn-sample">샘플 RFP 불러오기</button>
+            <button type="button" class="btn" id="btn-clear">지우기</button>
+          </div>
+          <div class="status-line" id="analyze-status" role="status" aria-live="polite"></div>
+        </div>
+        <div id="analyze-result">
+          <div class="card placeholder">
+            <strong>분석 결과가 여기에 표시됩니다</strong>
+            ‘샘플 RFP 불러오기’를 누르면 바로 체험해볼 수 있어요.
+          </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>모니터링 대상 기관</h2>
-      <ul class="orgs">
-        <li>한국은행</li>
-        <li>예금보험공사</li>
-        <li>신용보증기금</li>
-        <li>기술보증기금</li>
-        <li>한국주택금융공사</li>
-        <li>IBK기업은행</li>
-        <li>한국산업은행</li>
-      </ul>
+    <!-- 3. 일정 캘린더 -->
+    <section class="view" id="view-calendar" aria-labelledby="h-calendar" hidden>
+      <div class="page-head">
+        <div>
+          <h1 id="h-calendar">일정 캘린더</h1>
+          <p>공고 게시, 제안 설명회, 제출 마감 일정을 한눈에 봅니다.</p>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--high-soft);border:1px solid var(--high)"></i>제출 마감</span>
+          <span><i style="background:var(--accent-soft);border:1px solid var(--accent)"></i>제안 설명회</span>
+          <span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>공고 게시</span>
+        </div>
+      </div>
+      <div class="cal-layout">
+        <div class="card" style="padding:14px">
+          <div class="cal-head">
+            <button type="button" class="icon-btn" id="cal-prev" aria-label="이전 달">‹</button>
+            <h2 id="cal-title"></h2>
+            <button type="button" class="icon-btn" id="cal-next" aria-label="다음 달">›</button>
+            <button type="button" class="btn" id="cal-today" style="margin-left:auto">오늘</button>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+        <div>
+          <div class="section-title" style="margin-top:0">다가오는 일정 (14일)</div>
+          <div class="card upcoming" id="upcoming"></div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>진행 상태</h2>
-      <div class="status"><span class="dot"></span>현재 데모 버전입니다. 공고 자동 수집(시중은행까지 확대) → RFP 업로드 분석·리스크 검증 → 일정 캘린더 순서로 업데이트할 예정입니다.</div>
+    <!-- 4. 서비스 소개 -->
+    <section class="view" id="view-about" aria-labelledby="h-about" hidden>
+      <div class="hero">
+        <span class="chip t-신규">핑거 AX 해커톤</span>
+        <h1 id="h-about">금융기관 IT 입찰공고,<br />놓치지 않고 빠르게 읽는다</h1>
+        <p>나라장터와 금융기관의 IT 사업 공고를 매일 모니터링하고, RFP 핵심 내용을 요약·분석해 리스크까지 검증합니다. 영업 담당자는 공고를 찾고 읽는 시간 대신 참여 여부를 판단하는 데 시간을 씁니다.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="card"><div class="step-n">01</div><h3>공고 모니터링</h3><p>대상 기관의 IT 공고를 데일리로 모아 신규·재공고·정정을 구분하고, 마감 임박 공고를 먼저 보여줍니다.</p></div>
+        <div class="card"><div class="step-n">02</div><h3>RFP 분석 · 리스크 검증</h3><p>예산·기간·일정·자격·평가 배점을 추출하고 지체상금, 무상 과업 변경, 공동수급 제한 같은 리스크를 근거 문장과 함께 짚어줍니다.</p></div>
+        <div class="card"><div class="step-n">03</div><h3>일정 캘린더</h3><p>설명회와 제출 마감을 캘린더로 모아 놓치는 마감이 없게 합니다.</p></div>
+      </div>
+
+      <h2 class="sec">모니터링 대상</h2>
+      <ul class="orgs">
+        <li>한국은행</li><li>예금보험공사</li><li>신용보증기금</li><li>기술보증기금</li><li>한국주택금융공사</li><li>IBK기업은행</li><li>한국산업은행</li>
+        <li class="bank">+ 시중은행 (KB국민·신한·우리·하나 등)</li>
+      </ul>
+
+      <h2 class="sec">로드맵</h2>
+      <div class="roadmap">
+        <div class="card"><span class="chip badge-done">MVP</span><h3>화면과 분석 엔진</h3><ul><li>공고 모니터링 화면</li><li>규칙 기반 RFP 분석·리스크 검증</li><li>일정 캘린더</li></ul></div>
+        <div class="card"><span class="chip badge-next">1단계</span><h3>공고 자동 수집</h3><ul><li>데일리 공고 자동 수집</li><li>시중은행 공고까지 확대</li></ul></div>
+        <div class="card"><span class="chip badge-later">2단계</span><h3>AI 분석 고도화</h3><ul><li>LLM 연동 RFP 요약</li><li>리스크 검증 규칙 확장</li></ul></div>
+        <div class="card"><span class="chip badge-later">3단계</span><h3>일정·알림</h3><ul><li>캘린더 연동</li><li>새 공고·마감 알림</li></ul></div>
+      </div>
+      <p class="note" style="margin-top:16px">현재 화면의 공고와 RFP는 기능 시연을 위한 가상 샘플 데이터입니다.</p>
     </section>
   </main>
+
+  <div class="drawer-bg" id="drawer-bg" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden></aside>
 
   <footer>
     <div class="wrap">© 2026 RFP Insight AI · 핑거 Business Orchestration</div>
   </footer>
+
+  <script src="assets/analyzer.js"></script>
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
